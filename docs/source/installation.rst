@@ -36,4 +36,3 @@ Next please run all code blocks in ``kaggle_load.ipynb`` to generate the backing
 You should see **film_actors.parquet** and **film_dataset.parquet** after this.
 
 You are now ready to play the game!
-
