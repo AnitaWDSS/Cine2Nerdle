@@ -25,8 +25,8 @@ Now we need to download the backing dataset. The dataset is supplied by kaggle,
 and therefore you will need to go to kaggle and register for an account.
 After this has been completed, please go to settings and generate an API Key.
 
-Next you will need to create a file called ``kaggle_tokens.ini`` and add your
-API Key to the file as below
+Next you will need to create a file called ``kaggle_tokens.ini`` (within the game_data
+directory) and add your API Key to the file as below
 
 .. code-block:: plaintext
 
