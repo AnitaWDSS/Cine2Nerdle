@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 import polars as pl
-from .engine.game_graph import GameGraph
+from cine_to_nerdle.engine.game_graph import GameGraph
 
 @dataclass
 class GameConfig:
@@ -15,17 +15,31 @@ class GameConfig:
 
 class Game:
 
-    film_df = pl.scan_parquet("game_data/film_dataset.parquet")
-    actor_df = pl.scan_parquet("game_data/film_actors.parquet")
+    film_df: pl.LazyFrame = pl.scan_parquet("game_data/film_dataset.parquet")
+    actor_df: pl.LazyFrame = pl.scan_parquet("game_data/film_actors.parquet")
 
-    def __init__(self, config: GameConfig) -> None:
-        """ The main game class. """
+    def __init__(
+            self,
+            config: GameConfig
+    ) -> None:
+        """
+        The main game class.
+
+        :param config: the GameConfig
+        """
 
         self.game_graph = GameGraph(film_df=self.film_df, actor_df=self.actor_df)
 
         self.game_graph.current_film = "Fight Club"
 
-    def check_film_link(self, film_name: str):
+    def check_film_link(self, film_name: str) -> bool:
+        """
+        Check if the active film is linked to a new film by any actors
+
+        :param film_name: name of the film to check
+        :return: is the film linked to a new film
+        :rtype: bool
+        """
         links = self.game_graph.get_film_links(film_name)
 
         if links.is_empty():

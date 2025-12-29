@@ -20,3 +20,8 @@ Install dependencies:
 .. code-block:: bash
 
    pip install -r requirements.txt
+
+Now we need to download the backing dataset. The dataset is supplied by kaggle
+
+.. code-block:: python
+
