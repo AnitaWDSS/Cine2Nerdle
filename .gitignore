@@ -1,0 +1,3 @@
+.idea
+docs/build
+cine_to_nerdle/game_data/*.parquet
