@@ -1,5 +1,4 @@
 from dataclasses import dataclass
-
 import polars as pl
 from cine_to_nerdle.engine.game_graph import GameGraph
 
@@ -44,7 +43,7 @@ class Game:
 
         if links.is_empty():
             return False
-
+            
         else:
             print(f"Found links on {links.get_column("actors")}")
             return True
